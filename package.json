@@ -1,0 +1,61 @@
+{
+  "name": "shared-components",
+  "version": "0.0.1-alpha",
+  "description": "Shared componennts to be used accross projects",
+  "scripts": {
+    "build": "npm run build:ui && npm run build:utils",
+    "build:ui": "babel src/components/ui --out-dir ./ui --ignore *.mock.js,*.spec.js,*.story.js",
+    "build:utils": "babel src/components/utils.js --out-file ./utils.js",
+    "lint": "eslint src/",
+    "postinstall": "npm run build",
+    "precommit": "npm run lint && npm run test",
+    "preview": "start-storybook -p 3000 -c .storybook",
+    "build:storybook": "build-storybook",
+    "test": "NODE_ENV=TEST jest",
+    "test-coverage": "NODE_ENV=TEST jest --coverage"
+  },
+  "author": "Rekha Gupta",
+  "dependencies": {
+    "@babel/cli": "*",
+    "@babel/core": "*",
+    "@babel/preset-env": "*",
+    "bundle-loader": "*",
+    "prop-types": "*"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.2.0",
+    "@babel/core": "^7.2.2",
+    "@babel/plugin-transform-object-assign": "^7.2.0",
+    "@babel/preset-react": "^7.0.0",
+    "@storybook/addon-actions": "*",
+    "@storybook/react": "*",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-eslint": "*",
+    "babel-jest": "^23.6.0",
+    "bundle-loader": "*",
+    "emotion": "*",
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.7.1",
+    "eslint": "*",
+    "eslint-config-airbnb": "*",
+    "eslint-plugin-import": "*",
+    "eslint-plugin-jsx-a11y": "*",
+    "eslint-plugin-react": "*",
+    "jest": "^23.6.0",
+    "jest-css-modules": "*",
+    "react": "*",
+    "react-dom": "*",
+    "react-test-renderer": "*",
+    "regenerator-runtime": "^0.13.1"
+  },
+  "jest": {
+    "setupTestFrameworkScriptFile": "./test-setup.js",
+    "testMatch": [
+      "**/src/**/*.spec.js"
+    ],
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest",
+      "^.+\\.s?css$": "jest-css-modules"
+    }
+  }
+}
